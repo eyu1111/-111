@@ -1,0 +1,33 @@
+local Proximits = {}
+
+for _, i in pairs(workspace:GetDescendants()) do
+    if i:IsA("ProximityPrompt") then
+        
+        i.HoldDuration = 0
+        
+        
+        i.MaxActivationDistance = math.huge
+        
+        
+        i.RequiresLineOfSight = false
+        
+        
+        i.Exclusivity = Enum.ProximityPromptExclusivity.AlwaysShow
+        
+        
+        table.insert(Proximits, i)
+    end
+end
+
+
+workspace.DescendantAdded:Connect(function(descendant)
+    if descendant:IsA("ProximityPrompt") then
+        
+        descendant.HoldDuration = 0
+        descendant.MaxActivationDistance = math.huge
+        descendant.RequiresLineOfSight = false
+        descendant.Exclusivity = Enum.ProximityPromptExclusivity.AlwaysShow
+        
+        table.insert(Proximits, descendant)
+    end
+end)
